@@ -11,11 +11,31 @@
 
 .page-content {
   flex: 1;
-  background: linear-gradient(180deg, #f7fafb 0%, #eef5f3 100%);
+  background:
+    radial-gradient(circle at top left, rgba(52, 211, 153, 0.12), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(20, 184, 166, 0.12), transparent 30%),
+    linear-gradient(180deg, #f7fafb 0%, #eef5f3 100%);
 }
 
 .page-section {
   padding: 72px 0;
+  animation: fadeUp 0.6s ease-out both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 .section-heading {
@@ -40,9 +60,10 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+  background: linear-gradient(135deg, rgba(12, 74, 110, 0.92), rgba(15, 118, 110, 0.86));
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(15, 118, 110, 0.18);
 }
 
 .navbar {
@@ -60,45 +81,49 @@
 }
 
 .brand-mark {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #126a52 0%, #15a77d 100%);
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.2);
   color: white;
   display: grid;
   place-items: center;
-  font-weight: 800;
+  font-size: 1.4rem;
+  box-shadow: inset 0 2px 12px rgba(255,255,255,0.2);
 }
 
 .brand-name {
-  font-size: 1.12rem;
+  font-size: 1.14rem;
   font-weight: 800;
-  color: #0f172a;
+  color: #ffffff;
 }
 
 .brand-tag {
   font-size: 0.72rem;
-  color: #64748b;
+  color: rgba(255,255,255,0.8);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
 }
 
 .nav-link {
   position: relative;
-  color: #334155;
+  color: rgba(255, 255, 255, 0.82);
   text-decoration: none;
   font-weight: 600;
-  padding: 8px 10px;
-  transition: color 0.2s ease;
+  padding: 10px 12px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
 }
 
 .nav-link.active,
 .nav-link:hover {
-  color: #0f766e;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .button-link,
@@ -109,10 +134,10 @@
 .amount-button,
 .small-button {
   border: none;
-  border-radius: 10px;
+  border-radius: 14px;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .primary-button,
@@ -122,32 +147,38 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.2rem;
+  padding: 0.85rem 1.3rem;
   text-decoration: none;
 }
 
 .primary-button {
   background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   color: white;
-  box-shadow: 0 14px 30px rgba(20, 184, 166, 0.22);
+  box-shadow: 0 16px 28px rgba(20, 184, 166, 0.22);
 }
 
 .primary-button:hover,
 .secondary-button:hover,
 .ghost-button:hover,
 .logout-button:hover,
-.amount-button:hover {
-  transform: translateY(-1px);
+.amount-button:hover,
+.card-panel:hover,
+.stat-card:hover,
+.project-card:hover,
+.volunteer-card:hover,
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.09);
 }
 
 .secondary-button {
-  background: #e8f5f2;
+  background: linear-gradient(135deg, #edfdf8 0%, #dff6f0 100%);
   color: #0f766e;
 }
 
 .ghost-button {
-  background: transparent;
-  border: 1px solid rgba(15, 118, 110, 0.2);
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(15, 118, 110, 0.22);
   color: #0f172a;
 }
 
@@ -220,6 +251,11 @@
   border: 1px solid rgba(15, 23, 42, 0.06);
   border-radius: 22px;
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-panel:hover {
+  border-color: rgba(20, 184, 166, 0.2);
 }
 
 .hero-visual {
@@ -227,46 +263,89 @@
   padding: 30px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #f0fdfa 0%, #ecfeff 100%);
+  background: linear-gradient(135deg, #edf8f5 0%, #eaf3f3 100%);
 }
 
-.mini-card {
+.role-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 380px;
+}
+
+.role-card {
   position: absolute;
-  padding: 18px 20px;
-  border-radius: 18px;
-  box-shadow: 0 20px 35px rgba(15, 23, 42, 0.08);
+  width: min(280px, 72%);
+  padding: 20px 22px;
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  justify-content: center;
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.04);
 }
 
-.mini-card strong {
-  font-size: 1.7rem;
+.role-card h3 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2vw, 2.8rem);
+  line-height: 1.1;
   color: #0f172a;
 }
 
-.mini-card span {
-  color: #475569;
-  font-size: 0.8rem;
+.role-card p {
+  margin: 10px 0 0;
+  color: #465569;
+  font-size: 1rem;
 }
 
-.success-card {
-  right: 30px;
-  top: 30px;
-  background: #ecfdf5;
+.donor-role {
+  right: 28px;
+  top: 26px;
+  background: rgba(213, 240, 228, 0.9);
 }
 
-.info-card {
-  left: 30px;
-  bottom: 25px;
-  background: #eff6ff;
-}
-
-.warning-card {
+.volunteer-role {
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -12%);
-  background: #fff7ed;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 243, 221, 0.9);
+  width: min(330px, 78%);
+}
+
+.ngo-role {
+  left: 28px;
+  bottom: 26px;
+  background: rgba(236, 240, 243, 0.95);
+}
+
+@media (max-width: 760px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .role-showcase {
+    min-height: 420px;
+  }
+
+  .role-card {
+    width: min(260px, 80%);
+  }
+
+  .donor-role {
+    right: 18px;
+    top: 18px;
+  }
+
+  .volunteer-role {
+    top: 50%;
+    width: min(280px, 86%);
+  }
+
+  .ngo-role {
+    left: 18px;
+    bottom: 18px;
+  }
 }
 
 .stats-grid {
@@ -903,12 +982,83 @@ th {
     font-size: 2.5rem;
   }
 
+  .hero-copy p {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions a,
+  .primary-button,
+  .secondary-button,
+  .ghost-button {
+    width: 100%;
+  }
+
   .hero-visual {
-    min-height: 260px;
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .role-showcase {
+    display: grid;
+    gap: 14px;
+    min-height: auto;
+  }
+
+  .role-card {
+    position: static;
+    transform: none;
+    width: 100%;
   }
 
   .profile-panel {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    width: min(100% - 18px, 1200px);
+  }
+
+  .page-section {
+    padding: 40px 0;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+  }
+
+  .hero-copy h1 {
+    font-size: 2.15rem;
+    line-height: 1.1;
+  }
+
+  .role-card {
+    padding: 16px 18px;
+  }
+
+  .role-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .section-heading h2 {
+    font-size: 1.9rem;
+  }
+
+  .card-panel,
+  .report-panel,
+  .form-panel,
+  .list-panel,
+  .contact-card,
+  .profile-panel,
+  .donation-panel {
+    padding: 18px;
   }
 }

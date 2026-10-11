@@ -1,13 +1,19 @@
 :root {
-  font-family: Inter, 'Segoe UI', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #0f172a;
-  background: #f7fafb;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg-soft: #f5f8f7;
+  --bg-page: linear-gradient(180deg, #f4faf7 0%, #edf4f4 100%);
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-strong: #ffffff;
+  --text: #1f2937;
+  --muted: #576575;
+  --primary: #0f766e;
+  --primary-strong: #0b5d57;
+  --secondary: #f59e0b;
+  --accent: #34d399;
+  --line: rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 14px 35px rgba(15, 118, 110, 0.12);
+  --shadow-card: 0 18px 40px rgba(15, 23, 42, 0.08);
+  --radius-lg: 26px;
+  --radius-md: 18px;
 }
 
 * {
@@ -21,7 +27,8 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: #f7fafb;
+  background: var(--bg-page);
+  color: var(--text);
 }
 
 img {

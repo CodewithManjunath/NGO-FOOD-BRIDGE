@@ -24,7 +24,7 @@ export default function Navbar() {
     <header className="site-header">
       <nav className="navbar container" aria-label="Main navigation">
         <div className="brand-wrap">
-          <div className="brand-mark">FD</div>
+          <div className="brand-mark" aria-label="FoodBridge logo">🍲</div>
           <div>
             <div className="brand-name">FoodBridge</div>
             <div className="brand-tag">Feed hope. Grow kindness.</div>

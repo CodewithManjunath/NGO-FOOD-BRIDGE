@@ -18,18 +18,18 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="hero-visual card-panel">
-            <div className="mini-card success-card">
-              <strong>Donor</strong>
-              <span>Offer safe surplus food</span>
+          <div className="hero-visual card-panel role-showcase" aria-label="Platform roles">
+            <div className="role-card donor-role">
+              <h3>Donor</h3>
+              <p>Offer safe surplus food</p>
             </div>
-            <div className="mini-card info-card">
-              <strong>NGO</strong>
-              <span>Accept or decline requests</span>
+            <div className="role-card volunteer-role">
+              <h3>Volunteer</h3>
+              <p>Join available rescue shifts</p>
             </div>
-            <div className="mini-card warning-card">
-              <strong>Volunteer</strong>
-              <span>Join available rescue shifts</span>
+            <div className="role-card ngo-role">
+              <h3>NGO</h3>
+              <p>Accept or decline requests</p>
             </div>
           </div>
         </div>
