@@ -18,9 +18,9 @@ export default function ReportsPage() {
     })
   }, [category, priority, query, status])
 
-  const [demoReport, setDemoReport] = useState({
-    title: 'Street Light Repair',
-    category: 'Street Lights',
+  const [demoReport] = useState({
+    title: 'Rice Distribution Request',
+    category: 'Rice',
     location: 'Koramangala',
   })
 
@@ -34,12 +34,12 @@ export default function ReportsPage() {
   return (
     <div className="container page-section">
       <div className="section-heading">
-        <span className="eyebrow">Community Issues</span>
-        <h1>Reported problems</h1>
+        <span className="eyebrow">Food support requests</span>
+        <h1>Food Donation Request Form</h1>
       </div>
 
       <div className="report-panel card-panel">
-        <h3>AI Suggested Priority</h3>
+        <h3>Urgency Estimate</h3>
         <p>
           <strong>{demoReport.title}</strong> in {demoReport.location} is recommended as <span className="priority-badge high">{suggestedPriority}</span>
         </p>
@@ -50,8 +50,42 @@ export default function ReportsPage() {
         </div>
       </div>
 
+      <div className="two-column-layout">
+        <form className="form-panel card-panel">
+          <h3>Submit a food request</h3>
+          <div className="form-grid">
+            <input type="text" placeholder="Request Title" required />
+            <input type="text" placeholder="Location" required />
+            <select>
+              <option>Rice</option>
+              <option>Groceries</option>
+              <option>Cooked Meals</option>
+              <option>Baby Food</option>
+              <option>Water</option>
+            </select>
+            <select>
+              <option>High Priority</option>
+              <option>Medium Priority</option>
+              <option>Low Priority</option>
+            </select>
+            <textarea rows="4" placeholder="Description of food need" required />
+            <textarea rows="4" placeholder="Contact information" required />
+          </div>
+          <button type="submit" className="primary-button">Submit Request</button>
+        </form>
+
+        <div className="card-panel report-panel">
+          <h3>Donation Categories</h3>
+          <div className="stack-list">
+            <div className="opportunity-item"><h4>Rice</h4><p>Dry ration and daily staple support</p></div>
+            <div className="opportunity-item"><h4>Groceries</h4><p>Essential household food packs</p></div>
+            <div className="opportunity-item"><h4>Cooked Meals</h4><p>Hot meals for shelters and urgent relief</p></div>
+          </div>
+        </div>
+      </div>
+
       <div className="filters-row card-panel">
-        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search projects, problems, campaigns..." />
+        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search requests, locations, campaigns..." />
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="All">All Categories</option>
           {categories.map((item) => (
@@ -87,7 +121,7 @@ export default function ReportsPage() {
               <p><strong>Location:</strong> {report.location}</p>
               <p><strong>Date:</strong> {report.date}</p>
               <p><strong>Status:</strong> {report.status}</p>
-              <p><strong>Report ID:</strong> {report.id}</p>
+              <p><strong>Request ID:</strong> {report.id}</p>
               <div className="progress-row">
                 <div className="progress-bar"><span style={{ width: `${report.progress}%` }} /></div>
                 <strong>{report.progress}%</strong>
@@ -99,7 +133,7 @@ export default function ReportsPage() {
       </div>
 
       <div className="report-id-box">
-        <span>New report ID</span>
+        <span>New request ID</span>
         <strong>{generateReportId()}</strong>
       </div>
     </div>

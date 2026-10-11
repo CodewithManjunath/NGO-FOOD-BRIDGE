@@ -5,34 +5,24 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <h3>CommunityCare</h3>
-          <p>Building resilient communities through volunteer action, civic participation, and transparent solutions.</p>
+          <h3>FoodBridge</h3>
+          <p>Connecting households, restaurants, and hotels with NGOs to rescue surplus food and reduce waste.</p>
         </div>
 
         <div>
-          <h4>Explore</h4>
+          <h4>Food rescue</h4>
           <div className="footer-links">
-            <Link to="/about">About</Link>
-            <Link to="/projects">Projects</Link>
+            <Link to="/donate">Offer food or money</Link>
+            <Link to="/ngos">Find an NGO</Link>
             <Link to="/volunteer">Volunteer</Link>
-            <Link to="/donate">Donate</Link>
-            <Link to="/contact">Contact</Link>
-          </div>
-        </div>
-
-        <div>
-          <h4>Follow Us</h4>
-          <div className="footer-links">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer">YouTube</a>
+            <Link to="/register">Join as donor or NGO</Link>
+            <Link to="/login">Sign in</Link>
           </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <div className="container">© 2026 Community NGO Platform</div>
+        <div className="container">FoodBridge · Food rescue network</div>
       </div>
     </footer>
   )

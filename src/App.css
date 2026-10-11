@@ -642,6 +642,24 @@ textarea {
   width: min(100%, 500px);
 }
 
+.role-select-label {
+  display: block;
+  margin: 16px 0 6px;
+  color: #334155;
+  font-weight: 600;
+}
+
+.role-select {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  color: #0f172a;
+  font: inherit;
+}
+
 .small-note {
   margin-top: 12px;
   color: #475569;

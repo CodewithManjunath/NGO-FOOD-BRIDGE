@@ -1,8 +1,8 @@
 export const communityStats = [
-  { value: '10,000+', label: 'Community Members' },
-  { value: '2,500+', label: 'Volunteers' },
-  { value: '350+', label: 'Projects' },
-  { value: '8,000+', label: 'Problems Solved' },
+  { value: '24,500+', label: 'Meals Shared' },
+  { value: '1,800+', label: 'Volunteers' },
+  { value: '140+', label: 'Food Drives' },
+  { value: '9,400+', label: 'Families Helped' },
 ]
 
 export const reports = [
@@ -50,78 +50,78 @@ export const reports = [
 export const projects = [
   {
     id: 1,
-    name: 'Clean Community Initiative',
-    description: 'A neighborhood cleanup campaign to improve public spaces and reduce waste across the city.',
+    name: 'Midday Meal Drive',
+    description: 'Providing fresh and nutritious meals to schoolchildren and daily wage workers every week.',
     location: 'Bangalore',
-    target: '100 streets',
-    completed: '68 streets',
+    target: '500 meals',
+    completed: '340 meals',
     progress: 68,
     volunteers: 42,
     status: 'Active',
-    image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80',
   },
   {
     id: 2,
-    name: 'School Support Network',
-    description: 'Providing learning kits, mentorship, and digital support to children in underserved schools.',
+    name: 'Fresh Food Rescue',
+    description: 'Recovering surplus food from restaurants and markets to distribute to vulnerable families.',
     location: 'Hosur',
-    target: '12 schools',
-    completed: '8 schools',
+    target: '1,200 kg',
+    completed: '860 kg',
     progress: 72,
     volunteers: 31,
     status: 'In Progress',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80',
   },
   {
     id: 3,
-    name: 'Healthcare Outreach',
-    description: 'Free health screening and wellness support for vulnerable families in remote communities.',
+    name: 'Emergency Relief Kit',
+    description: 'Delivering staple food packs and essential nutrition support to families in crisis.',
     location: 'Mysuru',
-    target: '4 clinics',
-    completed: '2 clinics',
+    target: '250 kits',
+    completed: '120 kits',
     progress: 52,
     volunteers: 27,
     status: 'Planning',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=900&q=80',
   },
 ]
 
 export const volunteerOpportunities = [
   {
     id: 1,
-    title: 'Tree Plantation Drive',
+    title: 'Meal Packing Drive',
     location: 'Bangalore',
     date: '20 October 2026',
     volunteersNeeded: 50,
     registered: 32,
-    category: 'Environment',
+    category: 'Food Distribution',
   },
   {
     id: 2,
-    title: 'Food Distribution',
+    title: 'Community Kitchen Support',
     location: 'Mysuru',
     date: '24 October 2026',
     volunteersNeeded: 30,
     registered: 18,
-    category: 'Food Distribution',
+    category: 'Meal Service',
   },
   {
     id: 3,
-    title: 'Medical Camp',
+    title: 'Mobile Food Delivery',
     location: 'Hubli',
     date: '28 October 2026',
     volunteersNeeded: 20,
     registered: 12,
-    category: 'Healthcare',
+    category: 'Logistics',
   },
   {
     id: 4,
-    title: 'School Support',
+    title: 'School Meal Support',
     location: 'Bengaluru',
     date: '03 November 2026',
     volunteersNeeded: 25,
     registered: 16,
-    category: 'Education',
+    category: 'Education Support',
   },
 ]
 
@@ -153,10 +153,10 @@ export const users = [
 ]
 
 export const notifications = [
-  { id: 1, message: 'Your report NGO-2026-00482 is now under review.', read: false },
-  { id: 2, message: 'You have been accepted for Tree Plantation Drive.', read: false },
-  { id: 3, message: 'Your reported street-light problem has been resolved.', read: true },
-  { id: 4, message: 'A new volunteer opportunity is available near you.', read: false },
+  { id: 1, message: 'Your meal request for Ward 7 is now under review.', read: false },
+  { id: 2, message: 'You have been accepted for the Meal Packing Drive.', read: false },
+  { id: 3, message: 'A fresh food donation has been assigned to your neighborhood.', read: true },
+  { id: 4, message: 'A new food drive is available near you this weekend.', read: false },
 ]
 
 export const donations = [

@@ -4,13 +4,17 @@ import { useAuth } from '../contexts/AuthContext'
 
 const navItems = [
   { name: 'Home', to: '/' },
-  { name: 'About', to: '/about' },
-  { name: 'Problems', to: '/reports' },
-  { name: 'Projects', to: '/projects' },
+  { name: 'Find NGOs', to: '/ngos' },
+  { name: 'Offer Food or Money', to: '/donate' },
   { name: 'Volunteer', to: '/volunteer' },
-  { name: 'Donate', to: '/donate' },
-  { name: 'Contact', to: '/contact' },
 ]
+
+function portalForRole(role) {
+  if (role === 'admin') return { to: '/admin', label: 'Admin' }
+  if (role === 'ngo') return { to: '/ngo', label: 'NGO Inbox' }
+  if (role === 'volunteer') return { to: '/volunteer', label: 'Volunteer Shifts' }
+  return { to: '/donor', label: 'Donor Portal' }
+}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,10 +24,10 @@ export default function Navbar() {
     <header className="site-header">
       <nav className="navbar container" aria-label="Main navigation">
         <div className="brand-wrap">
-          <div className="brand-mark">NGO</div>
+          <div className="brand-mark">FD</div>
           <div>
-            <div className="brand-name">CommunityCare</div>
-            <div className="brand-tag">Together for action</div>
+            <div className="brand-name">FoodBridge</div>
+            <div className="brand-tag">Feed hope. Grow kindness.</div>
           </div>
         </div>
 
@@ -45,8 +49,8 @@ export default function Navbar() {
 
           {user ? (
             <>
-              <NavLink to={user.role === 'admin' ? '/admin' : '/dashboard'} className="nav-link button-link" onClick={() => setIsOpen(false)}>
-                {user.role === 'admin' ? 'Admin Panel' : 'Dashboard'}
+              <NavLink to={portalForRole(user.role).to} className="nav-link button-link" onClick={() => setIsOpen(false)}>
+                {portalForRole(user.role).label}
               </NavLink>
               <button type="button" className="logout-button" onClick={logout}>Logout</button>
             </>

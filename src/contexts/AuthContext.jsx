@@ -1,54 +1,56 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { apiRequest } from '../services/api'
 
 const AuthContext = createContext(null)
-const STORAGE_KEY = 'ngo-community-auth-user'
+const STORAGE_KEY = 'foodbridge-session'
+
+function readSession() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null')
+  } catch {
+    return null
+  }
+}
+
+function mapUser(user) {
+  return { ...user, role: user.role === 'donor' ? 'user' : user.role }
+}
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem(STORAGE_KEY)
-    return savedUser ? JSON.parse(savedUser) : null
-  })
+  const [session, setSession] = useState(readSession)
+  const user = session?.user || null
 
   useEffect(() => {
-    if (user) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(user))
+    if (session) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(session))
     } else {
       localStorage.removeItem(STORAGE_KEY)
     }
-  }, [user])
+  }, [session])
 
-  const login = ({ email, password }) => {
-    const normalizedEmail = email.trim().toLowerCase()
-    const isAdmin = normalizedEmail.includes('admin') || password === 'admin123'
-
-    const account = {
-      id: isAdmin ? 'admin1' : 'u1',
-      name: isAdmin ? 'Admin User' : 'Aisha Kumar',
-      email: normalizedEmail,
-      role: isAdmin ? 'admin' : 'user',
-      location: isAdmin ? 'Head Office' : 'Bangalore',
-    }
-
-    setUser(account)
-    return account
+  const login = async ({ email, password, accountType = 'donor' }) => {
+    const result = await apiRequest('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password, accountType }),
+    })
+    const nextSession = { token: result.token, user: mapUser(result.user) }
+    setSession(nextSession)
+    return nextSession.user
   }
 
-  const register = (formData) => {
-    const createdUser = {
-      id: `u-${Date.now()}`,
-      name: formData.name,
-      email: formData.email.trim().toLowerCase(),
-      role: 'user',
-      location: formData.location,
-    }
-
-    setUser(createdUser)
-    return createdUser
+  const register = async (formData) => {
+    const result = await apiRequest('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+    })
+    const nextSession = { token: result.token, user: mapUser(result.user) }
+    setSession(nextSession)
+    return nextSession.user
   }
 
-  const logout = () => setUser(null)
+  const logout = () => setSession(null)
 
-  const value = useMemo(() => ({ user, login, logout, register }), [user])
+  const value = useMemo(() => ({ user, token: session?.token || null, login, logout, register }), [session, user])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
